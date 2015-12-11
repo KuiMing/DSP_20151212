@@ -37,7 +37,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/benjamin/Ben"
+## [1] "/Users/benjamin/Github/DSP_20151212"
 ```
 
 ```r
@@ -94,7 +94,7 @@ ubike = read.csv('檔案路徑',
 ```
 
 ```
-## Read 83.8% of 656711 rowsRead 656711 rows and 21 (of 21) columns from 0.108 GB file in 00:00:03
+## Read 76.1% of 656711 rowsRead 656711 rows and 21 (of 21) columns from 0.108 GB file in 00:00:03
 ```
 
 --- &vcenter .largecontent
@@ -247,12 +247,12 @@ vignette("introduction", package = "dplyr")
 ## 中和區腳踏車
 
 
-|sna              | avg_rate|
-|:----------------|--------:|
-|中和公園         | 13.56075|
-|捷運永安市場站   | 17.51402|
-|中和國民運動中心 | 27.63830|
-|秀山國小         | 29.25234|
+|sna              | avg|
+|:----------------|---:|
+|中和公園         |  14|
+|捷運永安市場站   |  18|
+|中和國民運動中心 |  28|
+|秀山國小         |  29|
 
 --- &vcenter .largecontent
 
@@ -757,15 +757,15 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='中和區' & hour==7) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi))
+  summarise(avg=round(mean(avg.sbi)))
 ```
 
-|sna              | avg_rate|
-|:----------------|--------:|
-|捷運永安市場站   | 17.51402|
-|秀山國小         | 29.25234|
-|中和公園         | 13.56075|
-|中和國民運動中心 | 27.63830|
+|sna              | avg|
+|:----------------|---:|
+|捷運永安市場站   |  18|
+|秀山國小         |  29|
+|中和公園         |  14|
+|中和國民運動中心 |  28|
 
 --- &vcenter .largecontent
 
@@ -784,17 +784,17 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='中和區' & hour==7) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi)) %>%
-  arrange(avg_rate)
+  summarise(avg=round(mean(avg.sbi))) %>%
+  arrange(avg)
 ```
 
 
-|sna              | avg_rate|
-|:----------------|--------:|
-|中和公園         | 13.56075|
-|捷運永安市場站   | 17.51402|
-|中和國民運動中心 | 27.63830|
-|秀山國小         | 29.25234|
+|sna              | avg|
+|:----------------|---:|
+|中和公園         |  14|
+|捷運永安市場站   |  18|
+|中和國民運動中心 |  28|
+|秀山國小         |  29|
 
 
 --- &vcenter .largecontent
@@ -810,12 +810,12 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
 ### 小明發現住板橋的話，八點騎腳踏車就可以準時上班，還可以順便吃早餐，請幫忙找出板橋區各車站八點車子最多的站
 
 
-|sna                   | avg_rate|
-|:---------------------|--------:|
-|永安公園              | 15.00000|
-|捷運江子翠站(3號出口) | 23.33333|
-|音樂公園              | 23.66667|
-|板橋國民運動中心      | 24.33333|
+|sna                   | avg|
+|:---------------------|---:|
+|永安公園              |  15|
+|捷運江子翠站(3號出口) |  23|
+|板橋國民運動中心      |  24|
+|音樂公園              |  24|
 
 --- &vcenter .largecontent
 
@@ -862,16 +862,16 @@ bind_rows(ubike1,ubike2)
 ```
 ## Source: local data frame [8 x 2]
 ## 
-##                     sna avg_rate
-##                   (chr)    (dbl)
-## 1              中和公園 13.56075
-## 2        捷運永安市場站 17.51402
-## 3      中和國民運動中心 27.63830
-## 4              秀山國小 29.25234
-## 5              永安公園 15.00000
-## 6 捷運江子翠站(3號出口) 23.33333
-## 7              音樂公園 23.66667
-## 8      板橋國民運動中心 24.33333
+##                     sna   avg
+##                   (chr) (dbl)
+## 1              中和公園    14
+## 2        捷運永安市場站    18
+## 3      中和國民運動中心    28
+## 4              秀山國小    29
+## 5              永安公園    15
+## 6 捷運江子翠站(3號出口)    23
+## 7      板橋國民運動中心    24
+## 8              音樂公園    24
 ```
 
 --- &vcenter .largecontent
@@ -884,12 +884,12 @@ bind_cols(ubike1,ubike3)
 ```
 ## Source: local data frame [4 x 4]
 ## 
-##                sna avg_rate
-##              (chr)    (dbl)
-## 1         中和公園 13.56075
-## 2   捷運永安市場站 17.51402
-## 3 中和國民運動中心 27.63830
-## 4         秀山國小 29.25234
+##                sna   avg
+##              (chr) (dbl)
+## 1         中和公園    14
+## 2   捷運永安市場站    18
+## 3 中和國民運動中心    28
+## 4         秀山國小    29
 ##                sna
 ##              (chr)
 ## 1   捷運永安市場站
@@ -952,12 +952,12 @@ left_join(ubike1,ubike3)
 ```
 ## Source: local data frame [4 x 3]
 ## 
-##                sna avg_rate avg_anemo
-##              (chr)    (dbl)     (dbl)
-## 1         中和公園 13.56075  2.698973
-## 2   捷運永安市場站 17.51402  2.609531
-## 3 中和國民運動中心 27.63830  2.177059
-## 4         秀山國小 29.25234  3.033534
+##                sna   avg avg_anemo
+##              (chr) (dbl)     (dbl)
+## 1         中和公園    14  2.698973
+## 2   捷運永安市場站    18  2.609531
+## 3 中和國民運動中心    28  2.177059
+## 4         秀山國小    29  3.033534
 ```
 
 --- &vcenter .largecontent

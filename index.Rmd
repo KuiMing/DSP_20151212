@@ -266,8 +266,8 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='中和區' & hour==7) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi)) %>%
-  arrange(avg_rate)
+  summarise(avg=round(mean(avg.sbi))) %>%
+  arrange(avg)
 kable(ubike1)
 ```
 
@@ -370,7 +370,7 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='中和區' & hour==7) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi))
+  summarise(avg=round(mean(avg.sbi)))
 ```
 ```{r}
 kable(ubike1)
@@ -392,8 +392,8 @@ ubike1<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='中和區' & hour==7) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi)) %>%
-  arrange(avg_rate)
+  summarise(avg=round(mean(avg.sbi))) %>%
+  arrange(avg)
 ```
 
 ```{r}
@@ -418,8 +418,8 @@ ubike2<- select(ubike,hour,sarea,sna,avg.sbi) %>%
   filter(sarea=='板橋區' & hour==8) %>%
   mutate(avg.sbi=floor(avg.sbi)) %>%
   group_by(sna) %>%
-  summarise(avg_rate=mean(avg.sbi)) %>%
-  arrange(avg_rate)
+  summarise(avg=round(mean(avg.sbi))) %>%
+  arrange(avg)
 kable(ubike2)
 ```
 

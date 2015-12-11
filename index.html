@@ -78,7 +78,7 @@ library(reshape2)
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;/Users/benjamin/Ben&quot;
+<pre><code>## [1] &quot;/Users/benjamin/Github/DSP_20151212&quot;
 </code></pre>
 
 <pre><code class="r">setwd(&#39;路徑&#39;)
@@ -156,7 +156,7 @@ write(raw2, &quot;ubikeweatherutf8.csv&quot;)
 </code></pre>
 
 <pre><code>## 
-Read 83.8% of 656711 rows
+Read 76.1% of 656711 rows
 Read 656711 rows and 21 (of 21) columns from 0.108 GB file in 00:00:03
 </code></pre>
 
@@ -431,24 +431,24 @@ vignette(&quot;introduction&quot;, package = &quot;dplyr&quot;)
 <table><thead>
 <tr>
 <th align="left">sna</th>
-<th align="right">avg_rate</th>
+<th align="right">avg</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">中和公園</td>
-<td align="right">13.56075</td>
+<td align="right">14</td>
 </tr>
 <tr>
 <td align="left">捷運永安市場站</td>
-<td align="right">17.51402</td>
+<td align="right">18</td>
 </tr>
 <tr>
 <td align="left">中和國民運動中心</td>
-<td align="right">27.63830</td>
+<td align="right">28</td>
 </tr>
 <tr>
 <td align="left">秀山國小</td>
-<td align="right">29.25234</td>
+<td align="right">29</td>
 </tr>
 </tbody></table>
 
@@ -2909,30 +2909,30 @@ ubike1
   filter(sarea==&#39;中和區&#39; &amp; hour==7) %&gt;%
   mutate(avg.sbi=floor(avg.sbi)) %&gt;%
   group_by(sna) %&gt;%
-  summarise(avg_rate=mean(avg.sbi))
+  summarise(avg=round(mean(avg.sbi)))
 </code></pre>
 
 <table><thead>
 <tr>
 <th align="left">sna</th>
-<th align="right">avg_rate</th>
+<th align="right">avg</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">捷運永安市場站</td>
-<td align="right">17.51402</td>
+<td align="right">18</td>
 </tr>
 <tr>
 <td align="left">秀山國小</td>
-<td align="right">29.25234</td>
+<td align="right">29</td>
 </tr>
 <tr>
 <td align="left">中和公園</td>
-<td align="right">13.56075</td>
+<td align="right">14</td>
 </tr>
 <tr>
 <td align="left">中和國民運動中心</td>
-<td align="right">27.63830</td>
+<td align="right">28</td>
 </tr>
 </tbody></table>
 
@@ -2958,31 +2958,31 @@ ubike1
   filter(sarea==&#39;中和區&#39; &amp; hour==7) %&gt;%
   mutate(avg.sbi=floor(avg.sbi)) %&gt;%
   group_by(sna) %&gt;%
-  summarise(avg_rate=mean(avg.sbi)) %&gt;%
-  arrange(avg_rate)
+  summarise(avg=round(mean(avg.sbi))) %&gt;%
+  arrange(avg)
 </code></pre>
 
 <table><thead>
 <tr>
 <th align="left">sna</th>
-<th align="right">avg_rate</th>
+<th align="right">avg</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">中和公園</td>
-<td align="right">13.56075</td>
+<td align="right">14</td>
 </tr>
 <tr>
 <td align="left">捷運永安市場站</td>
-<td align="right">17.51402</td>
+<td align="right">18</td>
 </tr>
 <tr>
 <td align="left">中和國民運動中心</td>
-<td align="right">27.63830</td>
+<td align="right">28</td>
 </tr>
 <tr>
 <td align="left">秀山國小</td>
-<td align="right">29.25234</td>
+<td align="right">29</td>
 </tr>
 </tbody></table>
 
@@ -3009,24 +3009,24 @@ ubike1
 <table><thead>
 <tr>
 <th align="left">sna</th>
-<th align="right">avg_rate</th>
+<th align="right">avg</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">永安公園</td>
-<td align="right">15.00000</td>
+<td align="right">15</td>
 </tr>
 <tr>
 <td align="left">捷運江子翠站(3號出口)</td>
-<td align="right">23.33333</td>
-</tr>
-<tr>
-<td align="left">音樂公園</td>
-<td align="right">23.66667</td>
+<td align="right">23</td>
 </tr>
 <tr>
 <td align="left">板橋國民運動中心</td>
-<td align="right">24.33333</td>
+<td align="right">24</td>
+</tr>
+<tr>
+<td align="left">音樂公園</td>
+<td align="right">24</td>
 </tr>
 </tbody></table>
 
@@ -3114,16 +3114,16 @@ bind_cols(a,b)
 
 <pre><code>## Source: local data frame [8 x 2]
 ## 
-##                     sna avg_rate
-##                   (chr)    (dbl)
-## 1              中和公園 13.56075
-## 2        捷運永安市場站 17.51402
-## 3      中和國民運動中心 27.63830
-## 4              秀山國小 29.25234
-## 5              永安公園 15.00000
-## 6 捷運江子翠站(3號出口) 23.33333
-## 7              音樂公園 23.66667
-## 8      板橋國民運動中心 24.33333
+##                     sna   avg
+##                   (chr) (dbl)
+## 1              中和公園    14
+## 2        捷運永安市場站    18
+## 3      中和國民運動中心    28
+## 4              秀山國小    29
+## 5              永安公園    15
+## 6 捷運江子翠站(3號出口)    23
+## 7      板橋國民運動中心    24
+## 8              音樂公園    24
 </code></pre>
 
 </article>
@@ -3139,12 +3139,12 @@ bind_cols(a,b)
 
 <pre><code>## Source: local data frame [4 x 4]
 ## 
-##                sna avg_rate
-##              (chr)    (dbl)
-## 1         中和公園 13.56075
-## 2   捷運永安市場站 17.51402
-## 3 中和國民運動中心 27.63830
-## 4         秀山國小 29.25234
+##                sna   avg
+##              (chr) (dbl)
+## 1         中和公園    14
+## 2   捷運永安市場站    18
+## 3 中和國民運動中心    28
+## 4         秀山國小    29
 ##                sna
 ##              (chr)
 ## 1   捷運永安市場站
@@ -3238,12 +3238,12 @@ full_join(a,by=X1)
 
 <pre><code>## Source: local data frame [4 x 3]
 ## 
-##                sna avg_rate avg_anemo
-##              (chr)    (dbl)     (dbl)
-## 1         中和公園 13.56075  2.698973
-## 2   捷運永安市場站 17.51402  2.609531
-## 3 中和國民運動中心 27.63830  2.177059
-## 4         秀山國小 29.25234  3.033534
+##                sna   avg avg_anemo
+##              (chr) (dbl)     (dbl)
+## 1         中和公園    14  2.698973
+## 2   捷運永安市場站    18  2.609531
+## 3 中和國民運動中心    28  2.177059
+## 4         秀山國小    29  3.033534
 </code></pre>
 
 </article>
